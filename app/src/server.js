@@ -5,15 +5,21 @@ var app = express();
 // app.set('view engine', 'ejs')
 // app.use(express.static(__dirname + '/public'))
 
+var root = process.cwd();
+
 //your routes here
 app.get('/', function (req, res) {
-	res.send("Hello Hasura!");
+	res.sendFile('public/index.html', {root});
 });
 
+app.get('/details', function (req, res) {
+	res.sendFile('public/go_tour_hasura.html', {root});
+});
+ 
 app.get('/contact/', function (req, res) {
     res.send("Contact US!");
 });
 
-app.listen(8080, function () {
+app.listen(8000, function () {
   console.log('Example app listening on port 8080!');
 });
