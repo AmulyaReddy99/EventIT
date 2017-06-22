@@ -12,6 +12,10 @@ app.get('/', function (req, res) {
 	res.sendFile('public/index.html', {root});
 });
 
+// app.get('/bootstrap', function (req, res) {
+// 	res.sendFile('startbootstrap-modern-business-gh-pages/index.html', {root});
+// });
+
 app.get('/details', function (req, res) {
 	res.sendFile('public/go_tour_hasura.html', {root});
 });
