@@ -7,8 +7,7 @@ var app = express();
 
 //your routes here
 app.get('/', function (req, res) {
-	// res.send("Hello Hasura!");
-	res.sendFile(__dirname + '/public/index.html')
+	res.send("Hello Hasura!");
 });
 
 app.get('/contact/', function (req, res) {
