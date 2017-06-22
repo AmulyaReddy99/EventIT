@@ -3,7 +3,8 @@ var app = express();
 
 //your routes here
 app.get('/', function (req, res) {
-	res.send("Hello Hasura!");
+	// res.send("Hello Hasura!");
+	res.sendFile(__dirname + '/public/index.html');
 });
 
 app.get('/contact/', function (req, res) {
