@@ -1,9 +1,8 @@
 var express = require('express');
-var express = require('express');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var morgan = require('morgan');
+// var bodyParser = require('body-parser');
+// var cookieParser = require('cookie-parser');
+// var session = require('express-session');
+// var morgan = require('morgan');
 // var User = require(__dirname + '/public/js/user.js');
 
 
@@ -15,9 +14,9 @@ app.use(express.static(__dirname + '/public'));
 
 port = 8080;
 
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+// app.use(morgan('dev'));
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(cookieParser());
 
 // app.use(session({
 //     key: 'user_sid',
