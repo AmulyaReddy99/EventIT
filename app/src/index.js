@@ -13,7 +13,7 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
-port = 8000;
+port = 3000;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
