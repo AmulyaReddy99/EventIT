@@ -44,9 +44,9 @@ app.use(cookieParser());
 //     }
 // };
 
-// app.get('/', sessionChecker, function(req, res){
-//     res.redirect('/login');
-// });
+app.get('/', function(req, res){
+    res.render('home');
+});
 
 // app.get('/signup', sessionChecker, function(req, res){
 //     res.render('pages/signup');
