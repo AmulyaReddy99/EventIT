@@ -48,9 +48,35 @@ app.get('/', function (req, res) {
 //     }
 // };
 
-// app.get('/', function(req, res){
-//     res.render('home');
-// });
+app.get('/', function(req, res){
+    res.render('pages/home');
+});
+
+app.get('/about', function(req, res){
+    res.render('pages/about');
+});
+
+app.get('/services', function(req, res){
+    res.render('pages/services');
+});
+
+app.get('/contact', function(req, res){
+    res.render('pages/contact');
+});
+
+app.get('/cultural', function(req, res){
+    res.render('pages/cultural');
+});
+
+app.get('/technical', function(req, res){
+    res.render('pages/technical');
+});
+
+app.get('/sports', function(req, res){
+    res.render('pages/sports');
+});
+
+
 
 // app.get('/signup', sessionChecker, function(req, res){
 //     res.render('pages/signup');
@@ -71,9 +97,9 @@ app.get('/', function (req, res) {
 // //     });
 // // });
 
-app.get('/login', function(req, res){
-    res.render('pages/login');
-});
+// app.get('/login', function(req, res){
+//     res.render('pages/login');
+// });
 
 // app.post('/login', function(req, res){
 //     var username = req.body.username,
@@ -99,13 +125,13 @@ app.get('/login', function(req, res){
 //     }
 // });
 
-app.get('/about', function(req, res){
-  //   if (req.session.user && req.cookies.user_sid) {
-		// res.render('pages/about')
-  //   } else {
-        res.redirect('/login');
-    // }
-});
+// app.get('/about', function(req, res){
+//     if (req.session.user && req.cookies.user_sid) {
+// 		res.render('pages/about')
+//     } else {
+//         res.redirect('/login');
+//     }
+// });
 
 // app.get('/contact', function(req, res){
 //     if (req.session.user && req.cookies.user_sid) {
