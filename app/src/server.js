@@ -27,19 +27,19 @@ app.use('/', express.static(__dirname + '/public'));
 
 app.post('/login_register.html', urlencodedParser, function (req, res) {
   console.log(req.body);
-  res.render('/public/index.html',{root});
+  res.render('/index.html',{root});
 });
 
 app.get('/:name', function (req, res) {
-    res.sendFile('/public/' + req.params.name, {root});
+    res.sendFile('/' + req.params.name, {root});
 });
 
 app.get('/', function (req, res) {
-    res.sendFile('/public/home.html', {root});
+    res.sendFile('/index.html', {root});
 });
 
 app.get('*', function(req, res){
-    res.sendFile('/public/404.html',{root});
+    res.sendFile('/404.html',{root});
 });
 
 // app.use(morgan('dev'));
