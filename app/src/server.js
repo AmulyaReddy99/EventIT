@@ -11,9 +11,9 @@ var app = express();
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
 
-port = 8080;
+port = 8000;
 
 
 // app.use(morgan('dev'));
@@ -46,31 +46,36 @@ port = 8080;
 // };
 
 app.get('/', function(req, res){
-    res.render('home.ejs');
+    res.render('home');
 });
 
+app.get('/home', function(req, res){
+    res.render('home');
+});
+
+
 app.get('/about', function(req, res){
-    res.render('about.ejs');
+    res.render('about');
 });
 
 app.get('/services', function(req, res){
-    res.render('services.ejs');
+    res.render('services');
 });
 
 app.get('/contact', function(req, res){
-    res.render('contact.ejs');
+    res.render('contact');
 });
 
 app.get('/cultural', function(req, res){
-    res.render('cultural.ejs');
+    res.render('cultural');
 });
 
 app.get('/technical', function(req, res){
-    res.render('technical.ejs');
+    res.render('technical');
 });
 
 app.get('/sports', function(req, res){
-    res.render('sports.ejs');
+    res.render('sports');
 });
 
 
@@ -188,7 +193,7 @@ app.get('/sports', function(req, res){
 // });
 
 app.get('*', function(req, res){
-  	res.render('404.ejs');
+  	res.render('404');
 });
 
 
