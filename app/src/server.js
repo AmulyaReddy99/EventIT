@@ -14,6 +14,11 @@ app.use(express.static(__dirname + '/public'));
 
 port = 8080;
 
+app.get('/', function (req, res) {
+	res.sendFile('/index.html', {root});
+});
+
+
 // app.use(morgan('dev'));
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cookieParser());
@@ -43,9 +48,9 @@ port = 8080;
 //     }
 // };
 
-app.get('/', function(req, res){
-    res.render('home');
-});
+// app.get('/', function(req, res){
+//     res.render('home');
+// });
 
 // app.get('/signup', sessionChecker, function(req, res){
 //     res.render('pages/signup');
