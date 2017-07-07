@@ -1,202 +1,77 @@
 var express = require('express');
-// var bodyParser = require('body-parser');
-// var cookieParser = require('cookie-parser');
-// var session = require('express-session');
-// var morgan = require('morgan');
-// var User = require(__dirname + '/public/js/user.js');
-
-var root = process.cwd();
-// var router = express.Router();
+var bodyParser = require('body-parser');
 var app = express();
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-app.use('/', express.static(__dirname + '/public'));
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-port = 8080;
+var root = process.cwd();
 
-
-// app.use(morgan('dev'));
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cookieParser());
-
-// app.use(session({
-//     key: 'user_sid',
-//     secret: 'somerandonstuffs',
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//         expires: 600000
-//     }
-// }));
-
-// app.use(function(req, res, next){
-//     if (req.cookies.user_sid && !req.session.user) {
-//         res.clearCookie('user_sid');
-//     }
-//     next();
-// });
-
-// var sessionChecker = function(req, res, next){
-//     if (req.session.user && req.cookies.user_sid) {
-//         res.redirect('/home');
-//     } else {
-//         next();
-//     }
+// var Pool = require('pg').Pool;
+// var config = {
+//   host: 'localhost',
+//   user: 'foo',
+//   database: 'bar',
+//   password: process.env.DB_PASSWORD
 // };
 
-app.get('/', function(req, res){
-    res.render('home');
+// var dropdown = document.getElementById('dropdown_menu');
+// dropdown.onclick = function(){
+	
+// };
+app.get('/submit-name:name', function(req,res){
+	var name = req.query.name;
+
+	res.send(JSON.stringify(name));
 });
 
-app.get('/home', function(req, res){
-    res.render('home');
+app.set('view engine', 'ejs');
+app.use('/assets', function (req, res, next) {
+	console.log(req.url);
+	next();
 });
 
-
-app.get('/about', function(req, res){
-    res.render('about');
+app.post('/login_register.html', urlencodedParser, function (req, res) {
+  console.log(req.body);
+  res.render('index.html',{root});
 });
 
-app.get('/services', function(req, res){
-    res.render('services');
+app.get('/portfolio-1-col/:ename', function (req, res) {
+	res.render('portfolio-1-col', {event_name: req.params.ename});
 });
 
-app.get('/contact', function(req, res){
-    res.render('contact');
+// app.get('/portfolio-item/:pname', function (req, res) {
+// 	res.render('portfolio-item', {p_name: req.params.pname});
+// });
+
+// app.get('/about/:aname', function (req, res) {
+// 	res.render('about', {a_name: req.params.aname});
+// });
+
+// app.get('/contact/:cname', function (req, res) {
+// 	res.render('contact', {c_name: req.params.cname});
+// });
+
+// app.get('/template/:name', function (req, res) {
+// 	res.render('template', {file: req.params.name});
+// });
+
+app.get('/:name', function (req, res) {
+	//if(res.status === 404){res.sendFile('/404.html', {root});}
+	res.sendFile('/' + req.params.name, {root});
 });
 
-app.get('/cultural', function(req, res){
-    res.render('cultural');
+app.get('/main.js', function (req, res) {
+	res.sendFile('/' + main.js, {root});
 });
 
-app.get('/technical', function(req, res){
-    res.render('technical');
+app.get('/', function (req, res) {
+	res.sendFile('/index.html', {root});
 });
 
-app.get('/sports', function(req, res){
-    res.render('sports');
-});
-
-
-
-// app.get('/signup', sessionChecker, function(req, res){
-//     res.render('pages/signup');
+// app.get('*', function(req, res){
+//   	res.sendFile('/404.html', {root});
 // });
 
-// // app.post('/signup', function(req, res){
-// //     User.create({
-// //         username: req.body.username,
-// //         email: req.body.email,
-// //         password: req.body.password
-// //     })
-// //     .then( function(user){
-// //         req.session.user = user.dataValues;
-// //         res.redirect('/home');
-// //     })
-// //     .catch( function(error){
-// //         res.redirect('/signup');
-// //     });
-// // });
-
-// app.get('/login', function(req, res){
-//     res.render('pages/login');
-// });
-
-// app.post('/login', function(req, res){
-//     var username = req.body.username,
-//         password = req.body.password;
-
-//     User.findOne({ where: { username: username } }).then(function (user) {
-//         if (!user) {
-//             res.redirect('/login');
-//         } else if (!user.validPassword(password)) {
-//             res.redirect('/login');
-//         } else {
-//             req.session.user = user.dataValues;
-//             res.redirect('/home');
-//         }
-//     });
-// });
-
-// app.get('/home', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-// 		res.render('pages/home')
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
-
-// app.get('/about', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-// 		res.render('pages/about')
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
-
-// app.get('/contact', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-//         res.render('pages/contact')
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
-
-// app.get('/services', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-//         res.render('pages/services')
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
-
-// app.get('/cultural', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-//         res.render('pages/cultural')
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
-
-// app.get('/technical', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-//         res.render('pages/technical')
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
-
-// app.get('/sports', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-//         res.render('pages/sports')
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
-
-// app.get('/all_events', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-//         res.render('pages/all_events')
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
-
-// app.get('/logout', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-//         res.clearCookie('user_sid');
-//         res.redirect('/');
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
-
-app.get('*', function(req, res){
-  	res.render('404');
-});
-
-
-app.listen(port, function(){
-	console.log('Listening to port ' + port + ' ...');
+app.listen(8000, function () {
+  console.log('Example app listening on port 8000!');
 });
