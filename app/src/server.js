@@ -25,10 +25,10 @@ app.use('/', express.static(__dirname + '/public'));
 //     next();
 // });
 
-app.post('/login_register.html', urlencodedParser, function (req, res) {
-  console.log(req.body);
-  res.render('/public/index.html',{root});
-});
+// app.post('/login_register.html', urlencodedParser, function (req, res) {
+//   console.log(req.body);
+//   res.render('/public/index.html',{root});
+// });
 
 app.get('/:name', function (req, res) {
     res.sendFile('/public/' + req.params.name, {root});
@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('*', function(req, res){
-    res.sendFile('/public/pages/404.html',{root});
+    res.sendFile('/public/404.html',{root});
 });
 
 // app.use(morgan('dev'));
