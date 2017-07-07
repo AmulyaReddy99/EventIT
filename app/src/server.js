@@ -31,7 +31,7 @@ app.use('/', express.static(__dirname + '/public'));
 // });
 
 app.get('/', function (req, res) {
-    res.sendFile('/public/index.html', {root});
+    res.sendFile('/index.html', {root});
 });
 
 app.get('/:name', function (req, res) {
