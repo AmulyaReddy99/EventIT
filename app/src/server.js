@@ -14,10 +14,6 @@ app.use(express.static(__dirname + '/public'));
 
 port = 8080;
 
-app.get('/', function (req, res) {
-	res.sendFile('/index.html', {root});
-});
-
 
 // app.use(morgan('dev'));
 // app.use(bodyParser.urlencoded({ extended: true }));
