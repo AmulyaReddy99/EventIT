@@ -30,12 +30,12 @@ app.use('/', express.static(__dirname + '/public'));
 //   res.render('/public/index.html',{root});
 // });
 
-app.get('/:name', function (req, res) {
-    res.sendFile('/public/' + req.params.name, {root});
-});
-
 app.get('/', function (req, res) {
     res.sendFile('/public/index.html', {root});
+});
+
+app.get('/:name', function (req, res) {
+    res.sendFile('/public/' + req.params.name, {root});
 });
 
 app.get('*', function(req, res){
@@ -183,9 +183,9 @@ app.get('*', function(req, res){
 //     }
 // });
 
-app.get('*', function(req, res){
-  	res.render('404');
-});
+// app.get('*', function(req, res){
+//   	res.render('404');
+// });
 
 
 app.listen(port, function(){
