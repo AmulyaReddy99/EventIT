@@ -35,11 +35,11 @@ app.get('/:name', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-    res.sendFile('/public/index.html', {root});
+    res.sendFile('/public/home.html', {root});
 });
 
 app.get('*', function(req, res){
-    res.sendFile('/public/pages/404.html',{root});
+    res.sendFile('/public/404.html',{root});
 });
 
 // app.use(morgan('dev'));
