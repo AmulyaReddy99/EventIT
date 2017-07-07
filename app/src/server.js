@@ -49,31 +49,31 @@ app.get('/', function (req, res) {
 // };
 
 app.get('/', function(req, res){
-    res.render('pages/home');
+    res.render('home.ejs');
 });
 
 app.get('/about', function(req, res){
-    res.render('about');
+    res.render('about.ejs');
 });
 
 app.get('/services', function(req, res){
-    res.render('pages/services');
+    res.render('services.ejs');
 });
 
 app.get('/contact', function(req, res){
-    res.render('pages/contact');
+    res.render('contact.ejs');
 });
 
 app.get('/cultural', function(req, res){
-    res.render('pages/cultural');
+    res.render('cultural.ejs');
 });
 
 app.get('/technical', function(req, res){
-    res.render('pages/technical');
+    res.render('technical.ejs');
 });
 
 app.get('/sports', function(req, res){
-    res.render('pages/sports');
+    res.render('sports.ejs');
 });
 
 
@@ -191,7 +191,7 @@ app.get('/sports', function(req, res){
 // });
 
 app.get('*', function(req, res){
-  	res.render('pages/404');
+  	res.render('404.ejs');
 });
 
 
