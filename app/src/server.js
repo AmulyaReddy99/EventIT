@@ -9,6 +9,7 @@ var root = process.cwd();
 // var router = express.Router();
 var app = express();
 
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
