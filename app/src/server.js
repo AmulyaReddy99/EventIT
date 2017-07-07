@@ -5,11 +5,11 @@ var express = require('express');
 // var morgan = require('morgan');
 // var User = require(__dirname + '/public/js/user.js');
 
-
+var root = process.cwd();
 // var router = express.Router();
 var app = express();
 
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 port = 8080;
