@@ -18,10 +18,12 @@ port = 8080;
 
 
 app.set('view engine', 'ejs');
-app.use('/assets', function (req, res, next) {
-    console.log(req.url);
-    next();
-});
+app.use('/', express.static(__dirname + '/public'));
+
+// app.use('/assets', function (req, res, next) {
+//     console.log(req.url);
+//     next();
+// });
 
 app.post('/login_register.html', urlencodedParser, function (req, res) {
   console.log(req.body);
@@ -37,7 +39,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('*', function(req, res){
-    res.render('/public/pages/404');
+    res.sendFile('/public/pages/404.html',{root});
 });
 
 // app.use(morgan('dev'));
