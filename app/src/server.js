@@ -71,9 +71,9 @@ app.get('/', function (req, res) {
 // //     });
 // // });
 
-// app.get('/login', sessionChecker, function(req, res){
-//     res.render('pages/login');
-// });
+app.get('/login', function(req, res){
+    res.render('pages/login');
+});
 
 // app.post('/login', function(req, res){
 //     var username = req.body.username,
@@ -99,13 +99,13 @@ app.get('/', function (req, res) {
 //     }
 // });
 
-// app.get('/about', function(req, res){
-//     if (req.session.user && req.cookies.user_sid) {
-// 		res.render('pages/about')
-//     } else {
-//         res.redirect('/login');
-//     }
-// });
+app.get('/about', function(req, res){
+  //   if (req.session.user && req.cookies.user_sid) {
+		// res.render('pages/about')
+  //   } else {
+        res.redirect('/login');
+    // }
+});
 
 // app.get('/contact', function(req, res){
 //     if (req.session.user && req.cookies.user_sid) {
