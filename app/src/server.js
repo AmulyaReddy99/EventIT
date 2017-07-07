@@ -13,7 +13,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use('/', express.static(__dirname + '/public'));
 
-port = 8000;
+port = 8080;
 
 
 // app.use(morgan('dev'));
