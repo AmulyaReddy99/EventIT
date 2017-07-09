@@ -16,6 +16,14 @@ var app = express();
 
 port = 8080;
 
+var Pool = require('pg').Pool;
+var config = {
+  host: 'postgres.hasura:5432/hasuradb',
+  user: 'admin',
+  database: 'hasuradb',
+  port: 8080,
+  password: process.env.DB_PASSWORD
+};
 
 app.set('view engine', 'ejs');
 app.use('/', express.static(__dirname + '/public'));
@@ -32,6 +40,10 @@ app.use('/', express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
     res.sendFile('/index.html', {root});
+});
+
+app.get('/js/main.js', function (req, res) {
+	res.sendFile('/js/' + main.js, {root});
 });
 
 app.get('/:name', function (req, res) {
