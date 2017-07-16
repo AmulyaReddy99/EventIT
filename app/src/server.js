@@ -200,6 +200,6 @@ app.get('*', function(req, res){
 // });
 
 
-app.listen(port, '192.168.99.101');
+app.listen(port, function(){
 	console.log('Listening to port ' + port + ' ...');
-
+});
