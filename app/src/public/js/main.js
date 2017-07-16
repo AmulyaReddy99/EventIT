@@ -1,78 +1,48 @@
 $(document).ready(function(){
 
-    var authUrl = 'http://auth.c101.hasura.me/';
-    var dataUrl = 'http://data.clint.hasura.me/';
+    var authUrl = 'http://auth.c100.hasura.me/';
+    var dataUrl = 'http://data.c100.hasura.me/';
 
-  $("#register_btn").click(function(){ 
-    fname = $('#fname').val();
-	lname = $('#lname').val();
-	dob = $('#dob').val();
-	email = $('#email').val();
-	contact = $('#contact').val();
-	newUser = $('#newUser').val();
-	npsw = $('#npsw').val();
-	confirmnpsw = $('#confirmnpsw').val();
-    if((fname!== "") && (lname!== "") && (dob!== "") && (email!== "") && (contact!== "") && (newUser!== "") && (npsw!== "") && (confirmnpsw!== "") && (npsw === confirmnpsw)){
-    	$.ajax({
-            url: authUrl + 'signup',
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            data: JSON.stringify({
-                "username": $('#newUser').val(),
-                "password": $('#npsw').val(),
-            })
+    $("#register_btn").click(function(){ 
 
-        }).done(function(){
-            $('#validity').innerHTML= "Registered"; 
-            $("#validity").fadeIn().delay(1000).fadeOut();
-            setTimout(function () {
-                window.location = '../index.html';
-            }, 1100);
-        }).fail(function(data){
-            console.error(data);
-            $('#validity').innerHTML= JSON.parse(data.responseText).message;
-            $("#validity").fadeIn().delay(1000).fadeOut();
-        });
+    window.getCookie = function(name) 
+    {
+        match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+        if (match) return match[1];
+    }
+    var token=window.getCookie("auth_token");
+
+        if((newUser!== "") && (npsw!== "") && (confirmnpsw!== "")){
+        	if(npsw !== confirmnpsw) {alert('Confirm Password not matched')}
+            $.ajax({
+                url: authUrl + 'signup',
+                method: 'POST',
+                dataType: "json",
+                contentType: "application/json",
+                headers: {'Authorization' : 'Bearer ' + token},
+                data: JSON.stringify({
+                    "username": $('#newUser').val(),
+                    "password": $('#npsw').val(),
+                })
+
+            }).done(function(){
+                alert('done');
+            }).fail(function(data){
+                if(window.status === 409)
+                {alert('Username clash');}
+            });
+    	} else{alert('Please fill all details');}
+    });
+
+    //login
+    $("#login_btn").on("click",function(){
 
         $.ajax({
-            url: dataUrl + '/v1/query',
+            url: authUrl + 'login',
             method: 'POST',
             dataType: "json",
             contentType: "application/json",
             headers: {'Authorization' : 'Bearer ' + token},
-            data: JSON.stringify({
-                "type": "insert",
-                "args": {
-                  "table": "user",
-                  "objects": [
-                        {
-                            'fname': "fname",
-                            'lname': "lname",
-                            'dob': "dob",
-                            'uname': "newUser"
-                        }
-                    ]
-                }
-            })
-
-        }).done(function(){
-            alert('Saved your credentials! WELCOME');
-        }).fail(function(data){
-            alert('Unsaved');
-        });
-	}// if ends
-    else{
-        $('#validity').innerHTML= "Check if all fields are filled"; 
-        $("#validity").fadeIn().delay(1000).fadeOut();
-    }
-  });
-
-    //login
-    $("#login_btn").on("click",function(){
-        $.ajax({
-            url: authUrl + 'login',
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
             data: JSON.stringify({
                 "username": $('#uname').val(),
                 "password": $('#psw').val()
@@ -80,7 +50,6 @@ $(document).ready(function(){
         }).done(function(data){
             token = data.auth_token;
             userId = data.hasura_id;
-
             window.location = '/index.html';
             var d = new Date();
             d.setTime(d.getTime() + (1*24*60*60*1000));
@@ -92,3 +61,120 @@ $(document).ready(function(){
             alert("failed");
     });
 });
+
+    $("#logout_btn").on("click",function(){
+        $.ajax({
+            method: 'POST',
+            url: authUrl + 'logout',
+            headers: {'Authorization': 'Bearer ' + token},
+            done: function(e) {    
+               console.log(e);
+               alert("error");
+            },
+            fail:function(data){
+                alert("logged-out");
+                window.location = '/login_register.html';
+            },
+            dataType: "json",
+            contentType: "application/json"
+        });
+    });
+});
+// see below
+
+
+
+
+
+// //login ...
+// $(document).ready(function()
+// {
+// 	var button = ('login_btn');
+// 	button.onclick = function () {
+// 	var request = new XMLHttpRequest();
+// 		request.onreadystatechange = function(){
+// 			if(request.readyState === XMLHttpRequest.DONE){
+// 				if(request.status === 200){
+//                         alert("Success!");  //added
+//                         // user_id = JSON.parse(this.responseText).hasura_id;
+//                         // console.log(this.responseText);    // returns JSON object
+//                         // console.log("user_id = "+user_id);  
+//                         // document.cookie='user_id='+user_id;
+//                         // document.cookie='user_name='+username;
+//                         //console.log(document.cookie);
+// 					var name = request.responseText;
+// 					name = JSON.parse(name);
+// 					var me = ('nm');
+// 					me.innerHTML = name;
+// 					res.sendFile('/index.html', {root});
+// 				}
+// 				else {
+// 					alert('Invalid credentials. You might not be registered.');
+// 				}
+// 			}
+// 		};
+// 		var nameInput = ('uname');
+// 		var name = nameInput.value;
+// 		//request.open('GET', '127.0.0.1:8000/submit-name?name=' + name, true);
+// 		res.sendFile('/index.html', {root});
+
+// 		request.open('POST','http://auth.c101.hasura.me/login',true);
+// 		request.setRequestHeader('Content-Type','application/json');
+// 		request.withCredentials=true; //added
+// 		request.send(JSON.stringify({"username": newname, "password": password})); //password
+// 	};
+// });
+// // register ...
+// $(document).ready(function()
+// {
+// 	var register = ('register_btn');
+// 	register.onclick = function () {
+
+// 		var request = new XMLHttpRequest();
+// 		request.onreadystatechange = function(){
+
+// 			if(request.readyState === XMLHttpRequest.DONE){
+// 				if(request.staus === 200){
+// 					alert('Login to proceed');
+// 					res.sendFile('/login_register.html', {root});
+// 				}
+// 				else {
+// 					alert('Registration failed. Please try again');
+// 				}
+// 			}
+// 		};
+// 		var nameInput = ('newname');
+// 		var name = nameInput.value;
+// 		request.open('GET', '127.0.0.1:8000/submit-name?name=' + name, true);
+// 		res.sendFile('/index.html', {root});
+
+// 		request.open('POST','http://auth.c101.hasura.me/signup',true);
+// 		request.setRequestHeader('Content-Type','application/json');
+// 		request.send(JSON.stringify({"username": newname, "password": password })); //password
+// 	};
+// });
+// // logout...
+// $(document).ready(function()
+// {
+// 	var logout = ('logout_btn');
+// 	logout.onclick = function () {
+
+// 		var request = new XMLHttpRequest();
+// 		request.onreadystatechange = function(){
+
+// 			if(request.readyState === XMLHttpRequest.DONE){
+// 				if(request.staus === 200){
+// 					alert('Logged-out successfully');
+// 					res.sendFile('/login_register.html', {root});
+// 				}
+// 				else {
+// 					alert('Please try again. You are not logged-out.');
+// 				}
+// 			}
+// 		};
+
+// 		request.open('POST','http://auth.c101.hasura.me/logout',true);
+// 		request.setRequestHeader('Content-Type','application/json');
+// 		request.send(JSON.stringify({"username": newname, "password": password })); //password
+// 	};
+// });
