@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EventIT | Organise/Upload</title>
+    <link rel="shortcut icon" type="image/x-icon" href="web.ico" />
+    <link rel="icon" type="image" href="animated_favicon1.gif" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="js/organise.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">EventIT</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="services.html">Services</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Event Categories <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="portfolio-1-col.html?category=technical">Technical Events</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-1-col.html?category=machineLearning">Machine Learning</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-1-col.html?category=sports">Sports Events</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-1-col.html?category=cultural">Cultural Events</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-1-col.html?category=cloudComputing">Cloud computing</a>
+                            </li>
+                            <li>
+                                <a href="portfolio-1-col.html?category=iot">IoT</a>
+                            </li>
+                            <li><hr>
+                                <a href="portfolio-item.html">All Events</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="organise.html">Organise</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">Profile</a>
+                    </li>
+                    <li>
+                        <a href="login_register.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+   <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Organise
+                    <small>Hosting experience!</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li class="active">Organise</li>
+                </ol>
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-md-8">
+                <h3>Fill the details of event</h3>
+                <!-- <form name="sentMessage" id="contactForm" novalidate> -->
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Event name:</label>
+                            <input type="text" placeholder="text" class="form-control" id="event_name" required data-validation-required-message="Please enter your name.">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Date:</label>
+                            <input type="text" placeholder="YYYY-MM-DD" class="form-control" id="date" required data-validation-required-message="Please enter your phone number.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Time:</label>
+                            <input type="text" placeholder="hrs:mins" class="form-control" id="time" required data-validation-required-message="Please enter your phone number.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Place/City:</label>
+                            <input type="text" class="form-control" placeholder="text" id="place" required data-validation-required-message="Please enter your email address.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Contact number:</label>
+                            <input type="email" class="form-control" placeholder="9876543210" id="phno" required data-validation-required-message="Please enter your email address.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Email address to contact:</label>
+                            <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="name@name.com" id="email_id" required data-validation-required-message="Please enter your email address.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Pass fee for whole event:</label>
+                            <input type="text" class="form-control" placeholder="$250" id="price" required data-validation-required-message="Please enter your email address.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Category:</label>
+                            <input type="text" class="form-control" placeholder="technical or sports or cultural" id="category" required data-validation-required-message="Please enter your email address.">
+                            <!-- <label>Category:</label>
+                            <select name="category" id="category">
+                                <option value="0">Technical events</option>
+                                <option value="1">Sports events</option>
+                                <option value="2">Cultural events</option>
+                            </select> -->
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Email address to contact:</label>
+                            <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="name@name.com" id="email_id" required data-validation-required-message="Please enter your email address.">
+                        </div>
+                    </div>
+                    <div>
+                        <label>Upload Photos</label>
+                        <input type="file" accept="image/*">
+                    </div><br>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Number of workshops:</label>
+                            <input type="text" placeholder="4" class="form-control" id="wk_number" required data-validation-required-message="Please enter your phone number.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Workshop names (one in a line):</label>
+                            <textarea rows="10" cols="100" class="form-control" id="wk_names" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Description:</label>
+                            <textarea rows="10" cols="100" class="form-control" id="description" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                        </div>
+                    </div>
+                    <h4><div id="success"></div></h4>
+                    <!-- For success/fail messages -->
+                    <button id="upload_btn" method="POST" type="submit" class="btn btn-primary">Upload</button>
+                <!-- </form> -->
+            </div>
+        </div>
+        <!-- /.row -->
+        <hr>
+       
+<div class="w3-container w3-black w3-center w3-allerta">
+  <p class="w3-xlarge"><br>Making the Web!<br>
+    <p>
+        Login and choose a card. go through each section for better understanding such as weather, special food in the locality, culture and architecture of the area, visiting places, and other sections provided. Voice Translator is a feature that translates from any regional language (chosen) to English. this feature helps you to cope with different people in different localities understanding the language. 
+    </p>
+    <p class="w3-xlarge">Acknowledgements
+    <p>
+        Special thanks to Hasura for its support and encouragement. Also thanks to my Dad for his support.  
+    </p>
+    <p>
+        <h6>Terms and conditions appply. No copy rights.</h6>
+    </p>
+    <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; 2017 | EventIT</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</div>
+</body>
+
+</html>
