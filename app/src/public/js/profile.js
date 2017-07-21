@@ -15,7 +15,7 @@ var dataUrl = 'http://data.c100.hasura.me/';
         url: dataUrl + "v1/query",
         dataType: "json",
         contentType: "application/json",
-        headers: {'Authorization' : 'Bearer ' + token},
+        //headers: {'Authorization' : 'Bearer ' + token},
         data: JSON.stringify({ 
             "type": "select",
                 "args": {
