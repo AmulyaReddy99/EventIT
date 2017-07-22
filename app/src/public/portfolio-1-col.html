@@ -86,13 +86,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="organise.html">Organise</a>
+                        <a id="org" href="organise.html">Organise</a>
                     </li>
                     <li>
-                        <a href="profile.html">Profile</a>
+                        <a id="nm" href="profile.html">Profile</a>
                     </li>
-                    <li>
-                        <a href="login_register.html">Logout</a>
+                    <li id="logout_btn">
+                        <a>Logout</a>
+                    </li>
+                    <li id="login">
+                        <a href="login_register.html">Login</a>
                     </li>
                 </ul>
             </div>
@@ -187,6 +190,26 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        window.getCookie = function(name) 
+      {
+        match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+        if (match) return match[1];
+      }
+    var username = window.getCookie("username");
+
+    if(window.getCookie("username") === undefined)          
+    {
+        $('#logout_btn').hide();
+        $('#org').hide();
+        $('#nm').hide();     
+    }
+    else{
+        $('#login').hide();
+        $('nm').html(username);
+    }
+    </script>
 </div>
 </body>
 

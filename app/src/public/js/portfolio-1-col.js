@@ -107,28 +107,41 @@ var Body = function Body(data) {
                 alert("Failed to fetch data");
             });
 
+    window.getCookie = function(name) 
+    {
+        match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+        if (match) return match[1];
+    }
+    var token=window.getCookie("cookie_name");
+    var username=window.getCookie("username");
+
+
         $('#booknow').click(function(){
-            $('#booknow').html('Done');
             $.ajax({
                 method: 'POST',
                 url: dataUrl + 'v1/query',
                 dataType: "json",
                 contentType: "application/json",
-                //headers: {'Authorization' : 'Bearer ' + token},
+                headers: {'Authorization' : 'Bearer ' + token},
                 data: JSON.stringify({
                     "type": "insert",
                     "args": {
                         "table": "ue_table",
                         "objects": [
                             {
-                                'username': "Sreelatha79",
+                                'username': username,
                                 'event_id': event_id
                             }
                         ]
                     }
                 })
+            }).done(function(){
+            $('#booknow').html('Done');
+            }).fail(function(e){
+                console.log(e);
+                alert('Failed! Try again after logging in or you must have already booked for the event'); 
             });
-        });
+       });
 
         $("#comment").click(function(){
             if($('#comment').val() !== ""){

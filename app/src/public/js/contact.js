@@ -1,20 +1,21 @@
 $(document).ready(function(){
 
-var dataUrl = 'http://data.c101.hasura.me/';
+var dataUrl = 'http://data.c100.hasura.me/';
 
-    window.getCookie = function(name) 
-      {
-        match = document.cookie.match(new RegExp(name + '=([^;]+)'));
-        if (match) return match[1];
-      }
-    var token=window.getCookie("auth_token");
+    // window.getCookie = function(name) 
+    //   {
+    //     match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+    //     if (match) return match[1];
+    //   }
+    // var token=window.getCookie("cookie_name");
+    // var username = window.getCookie('username');
 
   $("#submit_btn").click(function(){ 
     name = document.getElementById('name').value;
     phone = document.getElementById('phone').value;
     email = document.getElementById('email').value;
     message = document.getElementById('message').value;
-    
+
     if((name!== "") && (phone!== "") && (email!== "") && (message!== "")){
         $.ajax({
             method: 'POST',
@@ -39,7 +40,8 @@ var dataUrl = 'http://data.c101.hasura.me/';
 		$("#test").fadeIn().delay(3000).fadeOut();	
 	}
     else {
-        document.getElementById('test').innerHTML= "Not sent. Check fields";
+        console.log(username);
+        document.getElementById('test').innerHTML= "Not sent. You are not logged in or check the fields if they are empty";
         $("#test").fadeIn().delay(3000).fadeOut();	
     }
   });
@@ -47,4 +49,4 @@ var dataUrl = 'http://data.c101.hasura.me/';
 // store message and details in database i.e. insert
 // view for messages by a particular username 
 
- });
+});

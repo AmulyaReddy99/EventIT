@@ -4,11 +4,13 @@ var authUrl = 'http://auth.c100.hasura.me/';
 var dataUrl = 'http://data.c100.hasura.me/';
 
     window.getCookie = function(name) 
-      {
+    {
         match = document.cookie.match(new RegExp(name + '=([^;]+)'));
         if (match) return match[1];
-      }
-    var token=window.getCookie("auth_token");
+    }
+    var token=window.getCookie("cookie_name"); console.log(token);
+    var username=window.getCookie("username"); console.log(username);
+
 
     $.ajax({
         method: 'POST',
@@ -21,7 +23,7 @@ var dataUrl = 'http://data.c100.hasura.me/';
                 "args": {
                     "table": "user",
                     "columns": ["uname", "fname", "lname", "dob", "phno", "email"],
-                    "where": {"uname": "Sreelatha79"}
+                    "where": {"uname": username}
                 }
             })// json obj and args are closed
         }).done(function(data){
@@ -50,7 +52,7 @@ var dataUrl = 'http://data.c100.hasura.me/';
                     "args": {
                         "table": "messages",
                         "columns": ["message", "timestamp"],
-                        "where": {"username": "Sreelatha"}
+                        "where": {"username": username}
                     }
                 })// json obj and args are closed
             }).done(function(data){
@@ -78,7 +80,7 @@ var dataUrl = 'http://data.c100.hasura.me/';
             url: dataUrl + "v1/query",
             dataType: "json",
             contentType: "application/json",
-            //headers: {'Authorization' : 'Bearer ' + token},
+            headers: {'Authorization' : 'Bearer ' + token},
             data: JSON.stringify({
                 "type": "update",
                 "args": {
@@ -87,7 +89,7 @@ var dataUrl = 'http://data.c100.hasura.me/';
                         "email": ne,
                         "phno": nc,
                     },
-                    "where": {"uname": "Sreelatha79"}
+                    "where": {"uname": username}
                 }
                 })// json obj and args are closed
             }).done(function(data){

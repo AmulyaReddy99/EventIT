@@ -85,13 +85,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="organise.html">Organise</a>
+                        <a id="org" href="organise.html">Organise</a>
                     </li>
                     <li>
-                        <a href="profile.html">Profile</a>
+                        <a id="nm" href="profile.html">Profile</a>
                     </li>
-                    <li>
-                        <a href="login_register.html">Logout</a>
+                    <li id="logout_btn">
+                        <a>Logout</a>
+                    </li>
+                    <li id="login">
+                        <a href="login_register.html">Login</a>
                     </li>
                 </ul>
             </div>
@@ -139,7 +142,7 @@
             </div>
             <div class="col-md-4 text-center">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="images/amulya.jpg" alt="Amulya Reddy">
+                    <img class="img-responsive" src="amulya.jpg" alt="Amulya Reddy">
                     <div class="caption">
                         <h3>Amulya Reddy<br>
                             <small>BE, Undergraduate</small>
@@ -158,7 +161,7 @@
             </div>
             <div class="col-md-4 text-center">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="images/tejas.jpg" alt="">
+                    <img class="img-responsive" src="Tejas Reddy.jpg" alt="">
                     <div class="caption">
                         <h3>Tejas Reddy<br>
                             <small>BTech, Undergraduate</small>
@@ -206,6 +209,28 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+    window.getCookie = function(name) 
+      {
+        match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+        if (match) return match[1];
+      }
+    var username = window.getCookie("username");
+
+    if(username === undefined)          
+    {
+        console.log(username)
+        $('#logout_btn').hide();
+        $('#org').hide();
+        $('#nm').hide();     
+    }
+    else{
+        $('#login').hide();
+        $('nm').html(username);
+    }
+    </script>
+
 </div>
 </body>
 

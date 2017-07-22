@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var dataUrl = 'http://data.c101.hasura.me/';
+    var dataUrl = 'http://data.c100.hasura.me/';
     $("#id03").click(function(){ 
         $.ajax({
             url: dataUrl + 'v1/query',
@@ -24,6 +24,7 @@ $(document).ready(function(){
                 }
             }) 
         });
-        window.location = '../index.html';
+        alert('Login to proceed...');
+        window.location = '/login_register.html';
     });
 });

@@ -1,13 +1,13 @@
 $(document).ready(function(){
 
-var dataUrl = 'http://data.c101.hasura.me/';
+var dataUrl = 'http://data.c100.hasura.me/';
 
     window.getCookie = function(name) 
       {
         match = document.cookie.match(new RegExp(name + '=([^;]+)'));
         if (match) return match[1];
       }
-    var token=window.getCookie("auth_token");
+    var token=window.getCookie("cookie_name");
 
   $("#upload_btn").click(function(){ 
     en = document.getElementById('event_name').value;
@@ -26,6 +26,8 @@ var dataUrl = 'http://data.c101.hasura.me/';
             method: 'POST',
             url: dataUrl + 'v1/query',
             headers: {'Authorization' : 'Bearer ' + token},
+            dataType: "json",
+            contentType: "application/json",
             data: JSON.stringify({
                 "type": "insert",
                 "args": {
@@ -46,12 +48,14 @@ var dataUrl = 'http://data.c101.hasura.me/';
                         }
                     ]
                 }
-            }), 
-            dataType: "json",
-            contentType: "application/json"
-        });
-    	document.getElementById('success').innerHTML= "Upload Sucessful"; 
-		$("#success").fadeIn().delay(3000).fadeOut();	
+            })
+            }).done(function(data){
+                document.getElementById('success').innerHTML= "Upload Sucessful"; 
+                $("#success").fadeIn().delay(3000).fadeOut();
+            }).fail(function(data){
+                console.error(data);
+                alert("failed");
+            });	
 	//}
     // else {
     //     document.getElementById('success').innerHTML= "Not uploaded. Check fields";

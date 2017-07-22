@@ -3,6 +3,15 @@ $(document).ready(function(){
 var authUrl = 'http://auth.c100.hasura.me/';
 var dataUrl = 'http://data.c100.hasura.me/';
 
+    window.getCookie = function(name) 
+    {
+        match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+        if (match) return match[1];
+    }
+    var token=window.getCookie("cookie_name"); console.log(token);
+    var username=window.getCookie("username"); console.log(username);
+
+
 var eveProfile = function eveProfile(data){
     for (var i = data.length - 1; i >= 0; i--) {
         var eveProfile = `<div class="panel panel-default">
@@ -70,7 +79,7 @@ $.ajax({
             "args": {
               "table": "ue_table",
               "columns": ["event_id"], 
-              "where": {"username": "Sreelatha79"}//requested event
+              "where": {"username": username}//requested event
             }
         })
         }).done(function(data){
