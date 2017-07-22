@@ -15,8 +15,8 @@ function getUrlVars()
 
 var category = getUrlVars()["category"];
 
-var authUrl = 'http://auth.c100.hasura.me/';
-var dataUrl = 'http://data.c100.hasura.me/';
+var authUrl = 'https://auth.delightful47.hasura-app.io/';
+var dataUrl = 'https://data.delightful47.hasura-app.io/';
 
 var SortByCategory = function SortByCategory(data) {
     for (var i = data.length - 1; i >= 0; i--) {

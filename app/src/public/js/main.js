@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-    var authUrl = 'http://auth.c100.hasura.me/';
-    var dataUrl = 'http://data.c100.hasura.me/';
+    var authUrl = 'https://auth.delightful47.hasura-app.io/';
+    var dataUrl = 'https://data.delightful47.hasura-app.io/';
 
     $("#register_btn").click(function(){ 
 

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var dataUrl = 'http://data.c100.hasura.me/';
+    var dataUrl = 'https://data.delightful47.hasura-app.io/';
     $("#id03").click(function(){ 
         $.ajax({
             url: dataUrl + 'v1/query',
