@@ -18,8 +18,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
-<!--     <script type="text/javascript" src="portfolio-1-col.js"></script>
- -->
+    <script type="text/javascript" src="js/main.js"></script>
+
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -33,7 +33,6 @@
 </head>
 
 <body>
-
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -92,7 +91,10 @@
                         <a href="profile.html" id="nm">Profile</a>
                     </li>
                     <li id="logout_btn">
-                        <a href="login_register.html">Logout</a>
+                        <a>Logout</a>
+                    </li>
+                    <li id="login">
+                        <a href="login_register.html">Login</a>
                     </li>
                 </ul>
             </div>
@@ -297,6 +299,26 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script>
+        window.getCookie = function(name) 
+      {
+        match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+        if (match) return match[1];
+      }
+    var username = window.getCookie("username");
+
+    if(window.getCookie("username") === undefined)          
+    {
+        $('#logout_btn').hide();
+        $('#org').hide();
+        $('#nm').hide();     
+    }
+    else{
+        $('#login').hide();
+        $('nm').html(username);
+    }
+    </script>
 
 </div>
 </body>
