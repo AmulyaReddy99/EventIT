@@ -28,7 +28,7 @@ var dataUrl = 'https://data.delightful47.hasura-app.io/';
             })// json obj and args are closed
         }).done(function(data){
         	console.log(data.length);
-            $('#uName').html(data[0].uname);
+            $('#uName').html(username);
             $('#Name').html(data[0].fname +" "+ data[0].lname);
             $('#d0b').html('DOB: '+ data[0].dob);
             $('#eMail').html('<a  href="mailto:'+ data[0].email+'"> '+data[0].email+'</a>');

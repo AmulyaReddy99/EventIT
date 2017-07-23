@@ -167,6 +167,8 @@ var Body = function Body(data) {
                             }), 
                             dataType: "json",
                             contentType: "application/json"
+                        }).fail(function(e){
+                            console.log(e);
                         });
                         $('#comment').val() = "";
                     }

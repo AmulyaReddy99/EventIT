@@ -28,13 +28,15 @@ var dataUrl = 'https://data.delightful47.hasura-app.io/';
                     "objects": [
                         {
                             'message': message,
-                            'username': name 
+                            'username': name
                         }
                     ]
                 }
             }), 
             dataType: "json",
             contentType: "application/json"
+        }).fail(function(e){
+            console.log(e);
         });
     	document.getElementById('test').innerHTML= "Message sent by "+name+" sucesfully"; 
 		$("#test").fadeIn().delay(3000).fadeOut();	
