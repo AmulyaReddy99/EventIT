@@ -50,7 +50,7 @@ var dataUrl = 'https://data.delightful47.hasura-app.io/';
                 }
             })
             }).done(function(data){
-                document.getElementById('success').innerHTML= "Upload Sucessful"; 
+                document.getElementById('success').innerHTML= "Upload Successful"; 
                 $("#success").fadeIn().delay(3000).fadeOut();
             }).fail(function(data){
                 console.error(data);
