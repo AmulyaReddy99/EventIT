@@ -95,21 +95,12 @@ var dataUrl = 'https://data.delightful47.hasura-app.io/';
             }).done(function(data){
                 document.getElementById('eMail').innerHTML= ne; 
                 document.getElementById('phNo').innerHTML= nc; 
-
+                
                 //$('#title').innerHTML = "All Messages ("+JSON.stringify(data.length)+")";
             }).fail(function(e){
                 console.log(e);
         });
        // modal.style.display = "none";
     });
-
-
-
-
-
-
-
-
-
 
 });

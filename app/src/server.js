@@ -14,7 +14,7 @@ var app = express();
 // app.set('view engine', 'ejs');
 // app.use('/', express.static(__dirname + '/public'));
 
-port = 8080;
+port = 8000;
 
 var Pool = require('pg').Pool;
 var config = {

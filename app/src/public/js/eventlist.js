@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+var authUrl = 'https://auth.delightful47.hasura-app.io/';
+var dataUrl = 'https://data.delightful47.hasura-app.io/';
+
 function getUrlVars()
 {
     var vars = [], hash;
@@ -14,9 +17,6 @@ function getUrlVars()
 }
 
 var category = getUrlVars()["category"];
-
-var authUrl = 'https://auth.delightful47.hasura-app.io/';
-var dataUrl = 'https://data.delightful47.hasura-app.io/';
 
 var SortByCategory = function SortByCategory(data) {
     for (var i = data.length - 1; i >= 0; i--) {
