@@ -22,7 +22,12 @@ $(document).ready(function(){
                     ]
 
                 }
-            }) 
+            })
+        }).done(function(){
+            alert('done');
+        }).fail(function(e){
+            alert('fail');
+            console.log(e);
         });
         alert('Login to proceed...');
         window.location = '/login_register.html';
