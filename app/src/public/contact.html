@@ -37,6 +37,13 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+
 </head>
 
 <body>
@@ -134,9 +141,28 @@
             <!-- Map Column -->
             <div class="col-md-8">
                 <!-- Embedded Google Map -->
-                <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
-            </div>
-            <!-- Contact Details Column -->
+                <!-- <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=17.2467575,74.3186086&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
+            </div> -->
+
+            <div id="map"></div>
+                <script>
+                  function initMap() {
+                    var uluru = {lat: 17.3850, lng: 78.4867};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 5,
+                      center: uluru
+                    });
+                    var marker = new google.maps.Marker({
+                      position: uluru,
+                      map: map
+                    });
+                  }
+                </script>
+                <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB02zKobhHyJVRz_ZV3A0p_HK4f5tMSebU&callback=initMap">
+                </script>
+            </div>            
+        <!-- Contact Details Column -->
             <div class="col-md-4">
                 <h3>Contact Details</h3>
                 <p>
