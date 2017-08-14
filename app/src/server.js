@@ -44,16 +44,14 @@ app.get('/webhook.html', function(req, res) {
 
 app.get('/', function (req, res) {
     res.sendFile('/index.html', {root});
-    $("#Done").click(function(){ 
 	  if (req.query['hub.mode'] === 'subscribe' &&
-	      req.query['hub.verify_token'] === $('#token').val()) {
-	    console.log($('#token').val());
+	      req.query['hub.verify_token'] === "amulya_mulybot_token_verification_test_start") {
+	    console.log("amulya_mulybot_token_verification_test_start");
 	    res.status(200).send(req.query['hub.challenge']);
 	  } else {
 	    console.error("Failed validation. Make sure the validation tokens match.");
 	    res.sendStatus(403);          
 	  }
-	}); 
 });
 
 app.get('/js/main.js', function (req, res) {
