@@ -38,7 +38,7 @@ app.use('/', express.static(__dirname + '/public'));
 //   res.render('/public/index.html',{root});
 // });
 
-app.get('/webhook.html', function(req, res) {
+app.get('/webhook', function(req, res) {
 	res.sendFile('/public/webhook.html', {root}); 
 });
 
