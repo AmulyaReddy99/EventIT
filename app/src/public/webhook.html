@@ -4,4 +4,16 @@
 		<input type="text" id="token"><br>
 		<button id="Done">Done</button>
 	</body>
+	<script type="text/javascript">
+		$("#Done").click(function(){ 
+		  if (req.query['hub.mode'] === 'subscribe' &&
+		      req.query['hub.verify_token'] === $('#token').val()) {
+		    console.log("Validating webhook");
+		    res.status(200).send(req.query['hub.challenge']);
+		  } else {
+		    console.error("Failed validation. Make sure the validation tokens match.");
+		    res.sendStatus(403);          
+		  }
+		} 
+	</script>
 </html>

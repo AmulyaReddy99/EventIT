@@ -38,6 +38,10 @@ app.use('/', express.static(__dirname + '/public'));
 //   res.render('/public/index.html',{root});
 // });
 
+app.get('/webhook.html', function(req, res) {
+	res.sendFile('/public/webhook.html', {root}); 
+});
+
 app.get('/', function (req, res) {
     res.sendFile('/index.html', {root});
 });
@@ -52,19 +56,6 @@ app.get('/:name', function (req, res) {
 
 app.get('*', function(req, res){
     res.sendFile('/public/404.html',{root});
-});
-
-app.get('/public/js/webhook.html', function(req, res) {
-	$("#Done").click(function(){ 
-	  if (req.query['hub.mode'] === 'subscribe' &&
-	      req.query['hub.verify_token'] === $('#token').val()) {
-	    console.log("Validating webhook");
-	    res.status(200).send(req.query['hub.challenge']);
-	  } else {
-	    console.error("Failed validation. Make sure the validation tokens match.");
-	    res.sendStatus(403);          
-	  }
-	}  
 });
 
 // app.use(morgan('dev'));
