@@ -54,6 +54,19 @@ app.get('*', function(req, res){
     res.sendFile('/public/404.html',{root});
 });
 
+app.get('/public/js/webhook.html', function(req, res) {
+	$("#Done").click(function(){ 
+	  if (req.query['hub.mode'] === 'subscribe' &&
+	      req.query['hub.verify_token'] === $('#token').val()) {
+	    console.log("Validating webhook");
+	    res.status(200).send(req.query['hub.challenge']);
+	  } else {
+	    console.error("Failed validation. Make sure the validation tokens match.");
+	    res.sendStatus(403);          
+	  }
+	}  
+});
+
 // app.use(morgan('dev'));
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cookieParser());
