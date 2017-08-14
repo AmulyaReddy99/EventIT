@@ -14,14 +14,14 @@ var app = express();
 // app.set('view engine', 'ejs');
 // app.use('/', express.static(__dirname + '/public'));
 
-port = 8080;
+port = 8000;
 
 var Pool = require('pg').Pool;
 var config = {
   host: 'postgres.hasura:5432/hasuradb',
   user: 'admin',
   database: 'hasuradb',
-  port: 8080,
+  port: 8000,
   password: process.env.DB_PASSWORD
 };
 
@@ -44,6 +44,16 @@ app.get('/webhook.html', function(req, res) {
 
 app.get('/', function (req, res) {
     res.sendFile('/index.html', {root});
+    $("#Done").click(function(){ 
+	  if (req.query['hub.mode'] === 'subscribe' &&
+	      req.query['hub.verify_token'] === $('#token').val()) {
+	    console.log($('#token').val());
+	    res.status(200).send(req.query['hub.challenge']);
+	  } else {
+	    console.error("Failed validation. Make sure the validation tokens match.");
+	    res.sendStatus(403);          
+	  }
+	}); 
 });
 
 app.get('/js/main.js', function (req, res) {

@@ -1,19 +1,17 @@
 <html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+	</head>
 	<body>
 		Verify token <br>
 		<input type="text" id="token"><br>
 		<button id="Done">Done</button>
 	</body>
-	<script type="text/javascript">
-		$("#Done").click(function(){ 
-		  if (req.query['hub.mode'] === 'subscribe' &&
-		      req.query['hub.verify_token'] === $('#token').val()) {
-		    console.log("Validating webhook");
-		    res.status(200).send(req.query['hub.challenge']);
-		  } else {
-		    console.error("Failed validation. Make sure the validation tokens match.");
-		    res.sendStatus(403);          
-		  }
-		} 
-	</script>
 </html>
