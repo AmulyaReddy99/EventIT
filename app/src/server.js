@@ -14,14 +14,14 @@ var app = express();
 // app.set('view engine', 'ejs');
 // app.use('/', express.static(__dirname + '/public'));
 
-port = 8000;
+port = 8080;
 
 var Pool = require('pg').Pool;
 var config = {
   host: 'postgres.hasura:5432/hasuradb',
   user: 'admin',
   database: 'hasuradb',
-  port: 8000,
+  port: 8080,
   password: process.env.DB_PASSWORD
 };
 
