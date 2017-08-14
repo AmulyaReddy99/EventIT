@@ -40,7 +40,6 @@ app.use('/', express.static(__dirname + '/public'));
 
 app.get('/webhook', function(req, res) {
 	res.sendFile('/public/webhook.html', {root});
-	$("#Done").click(function(){ 
 	  if (req.query['hub.mode'] === 'subscribe' &&
 	      req.query['hub.verify_token'] === "amulya_mulybot_token_verification_test_start") {
 	    console.log("amulya_mulybot_token_verification_test_start");
@@ -49,7 +48,6 @@ app.get('/webhook', function(req, res) {
 	    console.error("Failed validation. Make sure the validation tokens match.");
 	    res.sendStatus(403);          
 	  }
-	});  
 });
 
 app.get('/', function (req, res) {
