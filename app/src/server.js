@@ -14,7 +14,7 @@ var app = express();
 // app.set('view engine', 'ejs');
 // app.use('/', express.static(__dirname + '/public'));
 
-port = 8080;
+port = 8000;
 
 var Pool = require('pg').Pool;
 var config = {
@@ -38,16 +38,17 @@ app.use('/', express.static(__dirname + '/public'));
 //   res.render('/public/index.html',{root});
 // });
 
-//app.get('/webhook', function(req, res) {
+app.get('/webhook', function(req, res) {
 	//res.sendFile('/public/webhook.html', {root});
-	  // if (req.query['hub.mode'] === 'subscribe' &&
-	  //     req.query['hub.verify_token'] === "amulya_mulybot_token_verification_test_start") {
-	  //   console.log("amulya_mulybot_token_verification_test_start");
-	  //   res.status(200).send(req.query['hub.challenge']);
-	  // } else {
-	  //   console.error("Failed validation. Make sure the validation tokens match.");
-	  //   res.sendStatus(403);          
-	  // }
+	  if (req.query['hub.mode'] === 'subscribe' &&
+	      req.query['hub.verify_token'] === "amulya_mulybot_token_verification_test_start") {
+	    console.log("amulya_mulybot_token_verification_test_start");
+	    res.status(200).send(req.query['hub.challenge']);
+	  } else {
+	    console.error("Failed validation. Make sure the validation tokens match.");
+	    res.sendStatus(403);          
+	  }
+	});
 	  //
 app.post('/webhook', function (req, res) {
 	  var data = req.body;
@@ -114,7 +115,7 @@ app.post('/webhook', function (req, res) {
 	function callSendAPI(messageData) {
 	  request({
 	    uri: 'https://graph.facebook.com/v2.6/me/messages',
-	    qs: { access_token: PAGE_ACCESS_TOKEN },
+	    qs: { access_token: EAAEMwBCZCBbMBAGR4oINbUI6TKb2CbxE2Iq7kpEmrZAuDL2VcjuJKhS9ZBYAPZCr3JtNVXWWG4Ez1QN5ehinZAhuyGuuW2JT0DZCaeqZBxUosyylYIZCLyphYXrOoFnx5p1DHghiJjtucj4DYD4A7dXyoy4TBkTMYoP3xHaIMNwR0DM91hb8LdpN },
 	    method: 'POST',
 	    json: messageData
 
