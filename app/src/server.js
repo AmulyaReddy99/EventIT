@@ -38,17 +38,18 @@ app.use('/', express.static(__dirname + '/public'));
 //   res.render('/public/index.html',{root});
 // });
 
-app.get('/webhook', function(req, res) {
-	res.sendFile('/public/webhook.html', {root});
-	  if (req.query['hub.mode'] === 'subscribe' &&
-	      req.query['hub.verify_token'] === "amulya_mulybot_token_verification_test_start") {
-	    console.log("amulya_mulybot_token_verification_test_start");
-	    res.status(200).send(req.query['hub.challenge']);
-	  } else {
-	    console.error("Failed validation. Make sure the validation tokens match.");
-	    res.sendStatus(403);          
-	  }
+//app.get('/webhook', function(req, res) {
+	//res.sendFile('/public/webhook.html', {root});
+	  // if (req.query['hub.mode'] === 'subscribe' &&
+	  //     req.query['hub.verify_token'] === "amulya_mulybot_token_verification_test_start") {
+	  //   console.log("amulya_mulybot_token_verification_test_start");
+	  //   res.status(200).send(req.query['hub.challenge']);
+	  // } else {
+	  //   console.error("Failed validation. Make sure the validation tokens match.");
+	  //   res.sendStatus(403);          
+	  // }
 	  //
+app.post('/webhook', function (req, res) {
 	  var data = req.body;
 	  if (data.object === 'page') {
 	    data.entry.forEach(function(entry) {
