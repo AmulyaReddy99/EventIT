@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Quickstart - Build your own Docker image#
 
 Build the Docker image using the following command
@@ -36,3 +37,6 @@ Follow the steps mentioned below for git based pipeline
 ### **Port**
 
 Default Port for application is `8080` .
+=======
+# EventIT
+>>>>>>> 0b387eed2670b6222dade4e91893fbf05d7867c9
