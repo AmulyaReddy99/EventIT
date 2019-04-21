@@ -2,6 +2,8 @@
 
 You can use the [editor on GitHub](https://github.com/AmulyaReddy99/EventIT/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
+Webapp on event organising, online pass production and summary of events based on IT industry. (Hasura Intern project 2017 J)
+
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
